@@ -1,17 +1,3 @@
-const gifts = ['cat', 'game', 'socks']
-
-console.log('ACTUAL\n')
-const wrapped = wrapping(gifts)
-console.log(wrapped)
-
-
-console.log('EXPECTED\n')
-console.log(`
-*****\n*cat*\n*****
-******\n*game*\n******
-*******\n*socks*\n*******
-`)
-
 const uncutPaper = '**********************************************************************************************************************'
 function wrapping(gifts) {
   return gifts.map(gift => {
@@ -19,3 +5,16 @@ function wrapping(gifts) {
     return `${paper}\n*${gift}*\n${paper}`
   })
 }
+
+it('should met expected output', () => {
+  const gifts = ['cat', 'game', 'socks']
+  const expected = [
+    '*****\n*cat*\n*****',
+    '******\n*game*\n******',
+    '*******\n*socks*\n*******'
+  ]
+
+  const wrapped = wrapping(gifts)
+
+  expect(wrapped).toStrictEqual(expected)
+})
